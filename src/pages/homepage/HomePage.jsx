@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Lightbulb } from 'lucide-react';
-import BtnLevel from '../../components/button/BtnLevel';
+import BtnLevel from '../../components/buttonLevel/BtnLevel';
 import { useNavigate } from 'react-router-dom';
 
 export default function HomePage() {
