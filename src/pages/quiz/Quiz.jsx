@@ -19,13 +19,15 @@ export default function Quiz() {
      getData();
     },[])
 
-    console.log(questionsData)
+    console.log(amount)
+    console.log(count)
 
   return (
     <div>
         {
           modal ? <Modal/> : 
           <QuestionCard
+            amount={amount}
             questionsData={questionsData}
             score={score}
             setScore={setScore}
