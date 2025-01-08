@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Check, X } from "lucide-react";
+import confetti from 'canvas-confetti';
 
 export default function QuestionCard({
   questionsData,
@@ -17,6 +18,15 @@ export default function QuestionCard({
   const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [showCorrect, setShowCorrect] = useState(false);
 
+  const triggerConfetti = () => {
+    confetti({
+      particleCount: 100,
+      spread: 160,
+      origin: { y: 0.6 },
+      colors: ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FFEEAD']
+    });
+  };
+
   const handleAnswer = (e) => {
     if (answered) return;
     const clickedAnswer = e.currentTarget.value;
@@ -27,6 +37,7 @@ export default function QuestionCard({
 
     if (isCorrect) {
       setScore(score + 10);
+      triggerConfetti();
     }
 
     setAnswered(true);
