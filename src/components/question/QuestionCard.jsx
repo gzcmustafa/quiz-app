@@ -48,7 +48,7 @@ export default function QuestionCard({
       setAnswered(false);
       setShowCorrect(false);
       setSelectedAnswer(null);
-      if (count == 9) setModal(true);
+      if (count+1>= amount) setModal(true);
     }, 2000);
   };
 
