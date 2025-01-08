@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import * as api from '../../api/api'
-import QuestionCard from '../../components/questionCard/QuestionCard'
+import QuestionCard from '../../components/question/QuestionCard'
 import Modal from '@/components/modals/Modal'
+
 
 export default function Quiz() {
     const {difficulty,amount,category,type} = useParams()
@@ -25,7 +26,7 @@ export default function Quiz() {
   return (
     <div>
         {
-          modal ? <Modal/> : 
+          modal ? <Modal amount={amount} score={score}/> : 
           <QuestionCard
             amount={amount}
             questionsData={questionsData}

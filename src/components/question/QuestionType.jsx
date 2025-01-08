@@ -12,16 +12,16 @@ import {
 export default function QuestionType({data,setSelectType}) {
   return (
     <Select onValueChange={(value) => setSelectType(value)}>
-      <SelectTrigger className="w-[280px]">
+      <SelectTrigger  className="w-[200px] bg-orange-600 text-white border-2 border-white hover:bg-orange-600 focus:ring-2 focus:ring-white">
         <SelectValue placeholder="Select Quesionts Type" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          {data.map((type) => (
-            <SelectItem  value={type.toString()}>
-              {type}
-            </SelectItem>
-          ))}
+          
+            <SelectItem  value={"multiple"}>
+              Multiple-Choice
+            </SelectItem> 
+        
         </SelectGroup>
       </SelectContent>
     </Select>

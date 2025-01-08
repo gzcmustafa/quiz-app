@@ -11,7 +11,7 @@ import {
 export default function TotalQuestion({data, setTotalQuestion}) {
   return (
     <Select onValueChange={(value) => setTotalQuestion(value)}>
-      <SelectTrigger className="w-[280px]">
+      <SelectTrigger   className="w-[200px] bg-orange-600 text-white border-2 border-white hover:bg-orange-600 focus:ring-2 focus:ring-white">
         <SelectValue placeholder="Number of Question" />
       </SelectTrigger>
       <SelectContent>
