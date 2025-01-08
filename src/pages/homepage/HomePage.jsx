@@ -2,18 +2,56 @@ import React, { useState } from 'react'
 import { Lightbulb } from 'lucide-react';
 import BtnLevel from '../../components/buttonLevel/BtnLevel';
 import { useNavigate } from 'react-router-dom';
+import Category from '@/components/categoryCard/Category';
+import TotalQuestion from '@/components/amountQuestion/TotalQuestion';
+import QuestionType from '@/components/questionType/QuestionType';
 
 export default function HomePage() {
   const difficulty = ["easy", "medium", "hard"];
   const [difficultySelect, setDifficultySelect]= useState("");
+  const [selectType, setSelectType] = useState("")
+  const[category,setCategory] = useState()
+  const [totalQuestion,setTotalQuestion] = useState("")
+
+  const questionTypes = ["multiple","loading..."]
+  const amountsQuestion = [
+    0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50
+  ]
+  const categories = [
+    { id: 9, name: "General Knowledge" },
+    { id: 10, name: "Entertainment: Books" },
+    { id: 11, name: "Entertainment: Film" },
+    { id: 12, name: "Entertainment: Music" },
+    { id: 13, name: "Entertainment: Musicals & Theatres" },
+    { id: 14, name: "Entertainment: Television" },
+    { id: 15, name: "Entertainment: Video Games" },
+    { id: 16, name: "Entertainment: Board Games" },
+    { id: 17, name: "Science & Nature" },
+    { id: 18, name: "Science: Computers" },
+    { id: 19, name: "Science: Mathematics" },
+    { id: 20, name: "Mythology" },
+    { id: 21, name: "Sports" },
+    { id: 22, name: "Geography" },
+    { id: 23, name: "History" },
+    { id: 24, name: "Politics" },
+    { id: 25, name: "Art" },
+    { id: 26, name: "Celebrities" },
+    { id: 27, name: "Animals" },
+    { id: 28, name: "Vehicles" },
+    { id: 29, name: "Entertainment: Comics" },
+    { id: 30, name: "Science: Gadgets" },
+    { id: 31, name: "Entertainment: Japanese Anime & Manga" },
+    { id: 32, name: "Entertainment: Cartoon & Animations" }
+  ];
+
   const navigate = useNavigate();
 
-  console.log(difficultySelect)
-  const TOTAL_QUESTION = 10;
+  
+  
 
   const startQuiz = () => {
-    if(difficultySelect){
-       navigate(`/quiz/${difficultySelect}/${TOTAL_QUESTION}`)
+    if(difficultySelect && (selectType === "multiple") && (totalQuestion > 1) && category ){
+       navigate(`/quiz/${totalQuestion}/${category}/${difficultySelect}/${selectType}`)
     }
   }
 
@@ -59,7 +97,10 @@ export default function HomePage() {
         </div>
       </button>
 
-     <BtnLevel data={difficulty} setDifficultySelect={setDifficultySelect}></BtnLevel>
+      <Category data={categories} setCategory={setCategory}/>
+      <TotalQuestion data={amountsQuestion} setTotalQuestion={setTotalQuestion}/>
+      <QuestionType data={questionTypes} setSelectType={setSelectType}/>
+      <BtnLevel data={difficulty} setDifficultySelect={setDifficultySelect}></BtnLevel>
      
 
     </div>

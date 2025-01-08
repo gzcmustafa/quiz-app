@@ -5,7 +5,7 @@ import QuestionCard from '../../components/questionCard/QuestionCard'
 import Modal from '@/components/modals/Modal'
 
 export default function Quiz() {
-    const {difficulty,amount} = useParams()
+    const {difficulty,amount,category,type} = useParams()
     const [questionsData, setQuestionsData] = useState([])
     const [score,setScore] = useState(0)
     const [count,setCount] = useState(0)
@@ -13,7 +13,7 @@ export default function Quiz() {
 
     useEffect(() => {
         const getData = async() => {
-            const data = await api.fetchQuizData(difficulty,amount)
+            const data = await api.fetchQuizData(difficulty, amount,category,type)
             setQuestionsData(data)
         }
      getData();

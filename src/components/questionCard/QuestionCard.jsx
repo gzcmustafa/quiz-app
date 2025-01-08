@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { X, Check } from "lucide-react";
 
 export default function QuestionCard({
   questionsData,
@@ -12,18 +11,34 @@ export default function QuestionCard({
   setCount,
 }) {
   const [timer, setTimer] = useState(30);
-  const [answered, setAnswered] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(null);
 
-  const selectedAnswer = (e) => {
-    console.log(e.currentTarget.value);
-    const isCorrect =
-      e.currentTarget.value == questionsData[count]?.correct_answer;
-    console.log(isCorrect);
-    if (isCorrect) setScore(score + 10);
-    setCount(count + 1);
-    setTimer(30)
-    if (count == 9) setModal(true);
+  const [answered, setAnswered] = useState(false); 
+  const [selectedAnswer, setSelectedAnswer] = useState(null); 
+  const [showCorrect, setShowCorrect] = useState(false); 
+
+  const handleAnswer = (e) => {
+    if (answered) return; 
+    const clickedAnswer = e.currentTarget.value;
+    const isCorrect = clickedAnswer == questionsData[count]?.correct_answer;
+
+    setSelectedAnswer(clickedAnswer);
+    setShowCorrect(true); 
+
+    if (isCorrect) {
+      setScore(score + 10);
+    }
+
+    setAnswered(true); 
+
+    
+    setTimeout(() => {
+      setCount(count + 1);
+      setTimer(30);
+      setAnswered(false); 
+      setShowCorrect(false); 
+      setSelectedAnswer(null);
+      if (count == 9) setModal(true);
+    }, 2000);
   };
 
   useEffect(() => {
@@ -44,6 +59,14 @@ export default function QuestionCard({
     };
   }, [timer]);
 
+  const getButtonStyle = (answer) => {
+    if (showCorrect) {
+      if (answer === questionsData[count]?.correct_answer) return "bg-green-500"; 
+      if (answer === selectedAnswer) return "bg-red-500"; 
+    }
+    return ; 
+  };
+
   return (
     <div className="">
       <div>Time Left--{timer}</div>
@@ -52,10 +75,11 @@ export default function QuestionCard({
       </div>
       {questionsData[count]?.answers?.map((answer, i) => (
         <Button
-          // variant={getButtonStyle(answer)}
-          onClick={selectedAnswer}
+          className={getButtonStyle(answer)} 
+          onClick={handleAnswer}
           key={i}
           value={answer}
+          disabled={answered} 
         >
           {answer}
         </Button>
