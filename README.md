@@ -1,6 +1,6 @@
 # Quiz App 🎯
 
-A dynamic quiz application powered by the Open Trivia Database (OpenTDB) API. Challenge yourself with thousands of questions across multiple categories and difficulty levels. Built with React and modern web technologies for a seamless quiz experience!
+A dynamic quiz application powered by the Open Trivia Database (OpenTDB) API. Challenge yourself with thousands of questions across multiple categories and difficulty levels. Built with React and modern web technologies for quiz experience!
 
 ## 🚀 Live Demo
 
