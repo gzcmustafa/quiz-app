@@ -56,16 +56,6 @@ This Quiz App leverages the Open Trivia Database API to provide users with a div
 - **Lucide React** - Icons
 - **Open Trivia Database API** - Quiz questions database
 
-## 🎨 UI Features
-
-- Gradient backgrounds
-- Animated elements
-- Responsive design
-- Modern card layouts
-- Interactive buttons
-- Loading states
-- Modal dialogs
-
 
 ## 💻 Installation
 1. Clone the repository:
